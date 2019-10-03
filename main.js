@@ -1,12 +1,12 @@
-	function yome() {
-		document.getElementById('myForm').addEventListener('submit', saveData);
+      const yome = ()=>{
+		document.querySelector('#myForm').addEventListener('submit', saveData);
 		fetchData();
 	}
 
-		function saveData(e) {
-			var studentName = document.getElementById('studentName').value;
-			var studentMarks = document.getElementById('studentMarks').value;
-			var studentBranch = document.getElementById('studentBranch').value;
+              const saveData = (e) => {
+			var studentName = document.querySelector('#studentName').value;
+			var studentMarks = document.querySelector('#studentMarks').value;
+			var studentBranch = document.querySelector('#studentBranch').value;
 
 			if(!validateForm(studentName, studentMarks, studentBranch))
 				return false;
@@ -27,22 +27,24 @@
 				localStorage.setItem('students', JSON.stringify(students));
 			}
 			fetchData();
-			document.getElementById('myForm').reset();
-			setTimeout(function() {
+			document.querySelector('#myForm').reset();
+		      
+		      setTimeout(()=>{
 				alert('Created Successfully!');
 			},500);
 
 			e.preventDefault();
 		}
 
-		function fetchData() {
+
+		const fetchData () =>{
 			var students = JSON.parse(localStorage.getItem('students'));
-			var studentResults = document.getElementById('studentResults');
+			var studentResults = document.querySelector('#studentResults');
 			studentResults.innerHTML = '';
-			for(var i=0;i<students.length;i++) {
-				var name = students[i].name;
-				var marks = students[i].marks;
-				var branch = students[i].branch;
+			for(let i=0;i<students.length;i++) {
+				let name = students[i].name;
+				let marks = students[i].marks;
+				let branch = students[i].branch;
 				studentResults.innerHTML += '<tr>' +
 											'<td>' + (i+1) + '</td>' +
 											'<td>' + name + '</td>' +
@@ -57,9 +59,9 @@
 			}
 		}
 
-		function deleteData(name) {
-			var students = JSON.parse(localStorage.getItem('students'));
-			for(var i=0;i<students.length;i++) {
+		const deleteData = () => (name) {
+			let students = JSON.parse(localStorage.getItem('students'));
+			for(let i=0;i<students.length;i++) {
 				if(students[i].name == name) {
 					students.splice(i,1);
 				}
@@ -77,7 +79,7 @@
 			x.style.backgroundColor='grey';
 		}
 
-		function updateData(name) {
+      var updateData => (name) {
 			var students = JSON.parse(localStorage.getItem('students'));
 			for(var i=0;i<students.length;i++) {
 				if(students[i].name == name) {
@@ -96,7 +98,8 @@
 			},500);
 		}
 
-		function validateForm(studentName, studentMarks, studentBranch) {
+
+	var validateForm = () => (studentName, studentMarks, studentBranch) {
 			if(!studentName || !studentMarks || !studentBranch) {
 				alert('Please fill out the details.');
 				return false;
