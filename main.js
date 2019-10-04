@@ -37,7 +37,7 @@
 		}
 
 
-		const fetchData () =>{
+		const fetchData =  () =>{
 			var students = JSON.parse(localStorage.getItem('students'));
 			var studentResults = document.querySelector('#studentResults');
 			studentResults.innerHTML = '';
@@ -59,7 +59,7 @@
 			}
 		}
 
-		const deleteData = () => (name) {
+		const deleteData = (name) => {
 			let students = JSON.parse(localStorage.getItem('students'));
 			for(let i=0;i<students.length;i++) {
 				if(students[i].name == name) {
@@ -79,7 +79,7 @@
 			x.style.backgroundColor='grey';
 		}
 
-      var updateData => (name) {
+      const updateData = (name) => {
 			var students = JSON.parse(localStorage.getItem('students'));
 			for(var i=0;i<students.length;i++) {
 				if(students[i].name == name) {
@@ -99,7 +99,7 @@
 		}
 
 
-	var validateForm = () => (studentName, studentMarks, studentBranch) {
+	const validateForm = (studentName, studentMarks, studentBranch) =>  {
 			if(!studentName || !studentMarks || !studentBranch) {
 				alert('Please fill out the details.');
 				return false;
